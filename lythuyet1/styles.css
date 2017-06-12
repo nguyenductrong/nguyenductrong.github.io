@@ -1,0 +1,51 @@
+
+body{
+  width: 500px;
+  padding: 0px;
+  margin: 0px;
+   }
+.khung_thongtin{
+  width: 500px;
+  border: 1px solid #0033FF;
+  
+}
+.title strong{
+
+
+
+}
+.thongtin{
+  width: 500px;
+  heigth: 100px;
+ 
+}
+
+.avatar {
+  width:100px;
+  float: left;
+}
+.avatar img {
+ weight: 100px;
+ height: 90px;
+
+}
+.thongtincanhan{
+ height: 100px;
+ overflow: scroll;
+
+}
+.thongtincanhan p {
+  font-family: Georgia;
+}
+
+.tt_fact ul li:before {
+  content: url(Images/img_03.jpg);
+    margin-right: 4px;
+ 
+}
+
+.tt_fact li a{
+  text-decoration: none;
+  font-family: Georgia;
+}
+
