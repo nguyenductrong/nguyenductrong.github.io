@@ -1,0 +1,59 @@
+
+*{
+  margin:0px;
+  padding: 0px;
+
+}
+
+.body{
+  font-family: sans-serif;
+}
+
+#container{
+  margin: auto;
+  width: 900px;
+}
+
+#main{
+  padding: 10px;
+
+}
+
+#inf_new{
+  width: 600px;
+  float:left ;
+}
+
+.header_new {
+  hieght: 400px;
+}
+
+.title_new{
+  background: #e91b32;
+  float:left;
+}
+.new_left{
+  width: 300px;
+  float:left; 
+}
+
+.new_left img{
+  
+}
+img_new img{
+  
+}
+
+.new_right{
+ float:left;
+}
+
+.top_movie{
+
+}
+
+#search{
+  
+}
+
+
