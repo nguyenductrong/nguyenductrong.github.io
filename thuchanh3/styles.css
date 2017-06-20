@@ -1,163 +1,143 @@
-* {
-	margin: 0;
-	padding: 0;
-	
+﻿* {
+    margin: 0;
+    padding: 0;
 }
-
 #container {
-	background: #121212;
-	color: #505959;
-	font-size: sans-serif;
+    background: #121212;
+    color: #505959;
+    font-family: sans-serif;
 }
-
 #header {
-	background: url(images/fill_header.jpg);
-	position: relative;
-	height: 250px;
-	margin-bottom: auto;
+    background: url(images/fill_header.jpg);
+    height: 250px;
+    margin-bottom: auto;
+    position: relative;
 }
-
 .name_home {
-	background: url(images/logo.jpg) no-repeat;
-	position: absolute;
-	top: 53px;
-	left: 50px;
-	width: 353px;
+    background: url(images/logo.jpg) no-repeat;
+    width: 353px;
     height: 116px;
+    top: 53px;
+    left: 50px;
+    position: absolute;
 }
-
 .name_home h1 {
-	font-style: bold;
-	color: black;
+    font-style: bold;
+    color: black;
     font-size: 40px;
     margin-top: 35px;
     margin-left: 95px;
 }
-.tt_home {
-	color:#595959;
-}
-
 .menu_h {
-	position: absolute;
-	bottom: -57px;
+    position: absolute;
+    bottom: -57px;
     left: 68px;
 }
-
 .menu_h ul {
-	list-style: none;
+    list-style: none;
 }
-
 .menu_h li {
-	display: inline-block;
-	margin-left: 2px;
+    display: inline-block;
+    margin-left: 2px;
 }
 .menu_h li a {
-	color: white;
-	font-size: 22px;
-	text-decoration: none;
-	text-align: center;
+    color: white;
+    font-size: 22px;
+    text-decoration: none;
+    text-align: center;
 }
-
 .main {
-	margin-top: 114px;
-	margin-left: 70px;
-	width: 670px;
-	border-bottom: 1px dotted #323232;
+    margin-top: 114px;
+    margin-left: 70px;
+    width: 670px;
+    display: flex;
+    border-bottom: 1px dotted #323232;
 }
-
 .inf_left {
-	box-sizing: border-box;
+    box-sizing: border-box;
     background: #1f1f1f;
     padding: 50px 35px;
     height: 450px;
-	
 }
-
 .inf_left_up {
-  border-top: 1px solid #7e7e7e;
-  padding-top: 30px;
-  padding-bottom: 70px;
+    border-top: 1px solid #7e7e7e;
+    padding-top: 30px;
+    padding-bottom: 70px;
 }
-
+.inf_left_up p {
+    font-size: 12px;
+    text-align: left;
+    width: 180px;
+}
 .inf_left_down {
-  border-top: 1px solid #2c2c2c;
-  padding-top: 30px;
+    border-top: 1px solid #2c2c2c;
+    padding-top: 30px;
 }
-
 .inf_left_down li {
-  margin-left: 26px;
+    margin-left: 26px;
 }
-
 /* phần tạo dấu tam giác phía trước
    thẻ <li>
 */
+
 .inf_left_down li:before {
-  content: "";
-  border-color: transparent #707070;
-  border-style: solid;
-  border-width: 0.35em 0 0.35em 0.45em;
-  display: block;
-  height: 0;
-  width: 0;
-  left: -1em;
-  top: 0.9em;
-  position: relative;
+    content: "";
+    border-color: transparent #707070;
+    border-style: solid;
+    border-width: 0.35em 0 0.35em 0.45em;
+    display: block;
+    height: 0;
+    width: 0;
+    left: -1em;
+    top: 0.9em;
+    position: relative;
 }
-
 .inf_left_down li a {
-  color: #707070;
-  line-height: 18px;
+    color: #707070;
+    line-height: 18px;
+    font-size: 12px;
 }
-
 .inf_left_down ul {
-  list-style-type: none;
+    list-style-type: none;
 }
-
 #content {
-	margin-top: 50px;
-	margin-left: 30px;
-	margin-bottom: 10px;
-	display:fixed;
+    margin-top: 50px;
+    margin-left: 30px;
+    margin-bottom: 10px;
 }
-
-#content input[type="text"] {
-  background: #2c2c2c;
-  border: none;
-  padding: 6px;
-  margin: 15px 20px;
+#content input {
+    background: #2c2c2c;
+    border: none;
+    padding: 6px;
+    margin: 15px 20px;
 }
-
 #content p {
-  margin-left: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px dotted #323232;
+    margin-left: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px dotted #323232;
 }
-
 .listContent {
-	margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 .launch_web {
-  -webkit-text-decoration: none;
-  -moz-text-decoration: none;
-  -ms-text-decoration: none;
-  -o-text-decoration: none;
-  text-decoration: none;
-  color: white;
-  display: block;
-  margin: 15px 20px;
+    -webkit-text-decoration: none;
+    -moz-text-decoration: none;
+    -ms-text-decoration: none;
+    -o-text-decoration: none;
+    text-decoration: none;
+    color: white;
+    display: block;
+    margin: 15px 20px;
 }
-
 .launch_web:before {
-  content: url(images/arr_1.gif);
-  padding: 5px;
+    content: url(images/arr_1.gif);
+    padding: 5px;
 }
-
 .footer {
-	margin-left: 50px;
-	padding: 20px;
-	color: #404242;
+    margin-left: 50px;
+    padding: 20px;
+    color: #404242;
 }
-
 .footer a {
-	color: #7e7e7e;
+    color: #7e7e7e;
 }
