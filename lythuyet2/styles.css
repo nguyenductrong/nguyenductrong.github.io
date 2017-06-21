@@ -1,0 +1,190 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px; 
+  
+}
+
+#container{
+  background: #e6f3f9;
+  width: 350px;   
+  margin: auto;
+  padding: 10px;
+  padding-top: 0;
+ 
+}
+
+h1{
+  font-size: 16px;
+}
+
+h3{
+  font-size: 14px;
+}
+#blogroll h1{
+  border-bottom: 2px solid #ffa500;
+  
+}
+
+.inf_blogroll{
+  background: white;
+  padding: 10px 10px 10px 10px;
+  height: 95px;
+}
+
+.img_blo{ 
+ 
+}
+.img_blo img{
+  height: 90px;
+  width: 180px; 
+  float: left;
+  border: 2px solid rgba(193, 183, 183, 0.74);
+  margin-right: 10px;
+}
+
+.inf h3{
+  color: #0a6395;
+ 
+}
+
+.inf p{
+  text-align: left;
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+.list_inf{
+  background: #faf0bf;
+  
+}
+.list_inf ul li{
+  list-style-type: none;
+  padding: 10px;
+  border-bottom: 2px solid #ffffff; 
+}
+.list_inf ul li {
+  color: #0a6395;
+}
+
+.list_inf ul li strong{
+  font-weight: bold;
+}
+
+#horoscopes{
+  margin-top: 5px;
+}
+
+#horoscopes h1{
+  border-bottom: 2px solid #ffa500;
+}
+
+.inf_horoscopes{
+  height: 140px;
+  background: white;
+  padding: 20px 5px 10px 20px;
+}
+.img_hor{
+ height: 140px;
+ float: left;
+ margin-right: 10px;
+}
+.img_hor img{
+  width: 100px;
+  height: 100px;
+  
+}
+
+.ngaythang{
+  color: #808080;
+  margin-bottom: 10px;
+}
+
+.inf_libra{
+  height: 100px;
+  text-align: left;
+
+}
+.bottom_name{
+  background: #f4f4ec;
+  height: 60px;
+
+}
+
+.inf_name{
+  margin: 15px 10px 10px 20px;
+  float: left;
+}
+
+.inf_name h3{
+  color: #0a6395;
+}
+
+.img_name img{
+  height: 60px;
+  width: 80px;
+  float: right;
+}
+
+
+
+#getnew{
+  height: 150px;
+  margin-top: 20px;
+  border-bottom: 1px solid rgba(193, 183, 183, 0.74);
+}
+
+#getnew h1{
+  border-bottom: 2px solid #ffa500;
+  
+}
+.inf_new{
+  height: 120px;
+  background: white;
+}
+
+.inf_left{
+  width: 150px;
+  float: left;
+  padding: 20px 0px 10px 20px; 
+}
+
+.inf_left h3{
+  margin-top: 10px;
+  color: #0a6395;
+}
+.inf_right{
+  height: 90px;
+
+}
+.inf_right img{ 
+  width: 125px;
+  float: right;
+}
+
+#competitions{
+ margin-top: 10px;
+
+}
+.inf_competition{
+ margin-bottom: 10px;
+ height: 120px;
+}
+.inf_competition ul{
+    background: white;
+    border: 1px solid #dadada;
+    padding: 10px;
+    margin-bottom: 10px;
+    list-style: none;
+    width: 330px;
+}
+
+.inf_competition ul li a{
+  text-decoration: none;
+  font-size: 14px;
+  color: #0a6395;
+}
