@@ -120,10 +120,6 @@
     margin-bottom: 60px;
 }
 .launch_web {
-    -webkit-text-decoration: none;
-    -moz-text-decoration: none;
-    -ms-text-decoration: none;
-    -o-text-decoration: none;
     text-decoration: none;
     color: white;
     display: block;
