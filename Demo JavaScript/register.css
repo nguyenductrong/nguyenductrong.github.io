@@ -1,0 +1,51 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body { 
+	
+	font-size: 16px;
+}
+
+
+h1 {
+	font-weight:body;
+	margin-bottom: 10px;
+	
+}
+
+#register{
+	margin:auto;
+	width: 500px;
+	margin-top: 50px;
+}
+
+ div label{
+	width: 150px;
+	float: left;
+	display: block;
+    
+}
+form div{
+	padding: 5px;
+}
+form input{
+	width: 200px;
+	height: 30px;
+	border: 1px solid black;
+	background: none;
+	
+}
+
+#lb-submit{
+	text-indent: -9999px;
+}
+form input[type=submit] {
+    width: 70px;
+    height: 30px;
+    background: #E5F9F1;
+    cursor: pointer;
+	border-radius: 4px;
+}
+
