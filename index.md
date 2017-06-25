@@ -6,7 +6,7 @@
 * [Thực hành 2](https://nguyenductrong.github.io/thuchanh2/)
 * [Thực hành 3](https://nguyenductrong.github.io/thuchanh3/)
 # Javascript
-* [Slide ảnh]
+* [Slide ảnh](https://nguyenductrong.github.io/SlideImages/)
 * Calendar
 * Form Ajax
 
