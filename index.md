@@ -7,8 +7,8 @@
 * [Thực hành 3](https://nguyenductrong.github.io/thuchanh3/)
 # Javascript
 * [Slide ảnh](https://nguyenductrong.github.io/SlideImages/)
-* Calendar
-* Form Ajax
+* [Calendar](https://nguyenductrong.github.io/calender/)
+* [Form Ajax](https://nguyenductrong.github.io/formAjax/)
 
 
 # HTML5 Canvas
