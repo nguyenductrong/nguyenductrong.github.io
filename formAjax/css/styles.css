@@ -1,0 +1,125 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+#login {
+	margin: auto;
+	width: 700px;
+	height: auto;
+	margin-top: 100px;
+	border: 1px solid green;
+	border-radius: 4px;
+	padding: 10px;
+}
+
+h1 {
+	margin-bottom: 20px;
+}
+
+div label {
+	width: 100px;
+	float: left;
+	display: block;
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+
+form div {
+	padding: 5px;
+}
+
+form input {
+	width: 260px;
+	height: 30px;
+	border: 1px solid black;
+	border-radius: 8px;
+	background: none;
+}
+
+form span {
+	margin-left: 20px;
+	color: red;
+}
+
+.btnSub {
+	padding-left: 100px;
+}
+
+.btnSub button {
+	border-radius: 4px;
+	border: 1px solid black;
+	width: 80px;
+	height: 30px;
+	background: #3333FF;
+	color: white;
+	margin-right: 10px;
+}
+
+/* 
+  phan birthday
+*/
+td {
+	width: 55px;
+	height: 20px;
+	border: 1px solid #fff;
+	border-radius: 8px;
+	font-size: 14px;
+}
+
+#calendar .btn {
+	border: 1px solid #909497;
+	font-size: 15px;
+	text-align: center;
+	color: #2E86C1;
+	background: #A9CCE3;
+	cursor: pointer;
+}
+
+select {
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+
+.item:hover {
+	cursor: pointer;
+}
+
+#title {
+	color: red;
+	background: #bebebe;
+	font-weight: bold;
+	font-size: 25px;
+}
+
+#calendar {
+	overflow: auto;
+}
+
+#calendarIn {
+	position: relative;
+}
+
+#calendarIn input {
+	width: 260px;
+	height: 30px;
+	border: 1px solid black;
+	border-radius: 8px;
+	background: none;
+}
+
+#calendarIn img {
+	position: absolute;
+	right: 334px;
+	top: 12%;
+	height: 70%;
+}
+
+#status_js{
+	font-size: 18px;
+	font-weight: bold;
+	color: red;
+			
+}

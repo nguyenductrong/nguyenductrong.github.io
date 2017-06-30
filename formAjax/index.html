@@ -1,0 +1,66 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Form Ajax</title>
+
+<link rel="stylesheet" href="css/styles.css" />
+<script language="javascript" src="js/calendar-js.js">
+	
+</script>
+<script language="javascript" charset="UTF-8" src="js/formAjax-js.js"></script>
+</head>
+
+<body>
+
+	<div id="login">
+		<h1>FORM LOGIN</h1>
+		<form action="login" method="post">
+
+			<div>
+				<label for="username">Username: </label> <input class="text"
+					type="text" name="username" id="username" /> <span
+					id="errUserName"></span>
+			</div>
+
+			<div>
+				<label for="passwork">Password: </label> <input class="text"
+					type="password" name="password" id="password" /> <span
+					id="errPassword"></span>
+			</div>
+
+			<div>
+				<label for="email">Email: </label> <input class="text" type="text"
+					name="email" id="email" /> <span id="errEmail"></span>
+			</div>
+
+			<div>
+				<label for="birthday">Birthday: </label>
+				<div id="calendarIn">
+					<input class="text" type="text" name="birthday" id="birthday"
+						onclick="openCalendar();" /> <img src="images/calendar.png"
+						alt="images/calendar.png" />
+				</div>
+				<script type="text/javascript">
+				    setDateNowForInput();
+					show();
+				</script>
+			</div>
+			<div class="btnSub">
+				<button type="button" id="submit" name="submit"
+					onclick="submitClick();">SUBMIT</button>
+				<button type="submit" onclick="refreshClick();">REFRESH</button>
+			</div>
+
+
+		</form>
+		<div class="request">
+			<span id="status_js"></span>
+		</div>
+	</div>
+
+
+
+</body>
+</html>
