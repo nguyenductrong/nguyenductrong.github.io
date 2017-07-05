@@ -11,13 +11,13 @@ body {
     margin-top: 20px;
 }
 .title {
-    margin-top: 5px;
+	padding-top: 5px;
     width: 500px;
-    background: url(images/title_bg.gif) repeat-x;
+    background: url(images/title.jpg) repeat-x;
+	height: 24px;
 }
 .tt_player {
-    width: 500px;
-    padding-bottom: 10px;
+    
 }
 .thongtin {
     width: 500px;
@@ -64,6 +64,7 @@ body {
     background: #ECECEC;
     padding: 5px 5px 0 5px;
     margin-bottom: 2px;
+	margin-left: 5px;
 }
 .achievenments:after {
     position: absolute;
@@ -77,7 +78,8 @@ body {
     left: 5%;
 }
 .link {
-    margin-left: 60px;
+    margin-left: 70px;
+	font-size: 14px;
 }
 .link a {
     text-decoration: none;
