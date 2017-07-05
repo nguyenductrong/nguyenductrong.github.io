@@ -7,11 +7,11 @@ document.body.appendChild(container);
 var score = 10;
 var tempScore = 10;
 var heart = 5;
-var speedOfPlay = 1; 
+var speedOfPlay = 1;
 var numberBoom = 3;
 var numberStop = 3;
 var numberMonster = 1;
-var setBackground = false;
+var setBackground = false; // setBackground container
 var booleanBoom = true;
 var booleanStop = false;
 var booleanPause = false;
@@ -27,11 +27,11 @@ backgroundContainer.onload = function() {
 backgroundContainer.src = ("images/background.png");
 
 
-var imgMonter = new Image();
-imgMonter.onload = function() {
+var imageMonter = new Image();
+imageMonter.onload = function() {
 		
 };
-imgMonter.src = "images/monster.png";
+imageMonter.src = "images/monster.png";
 
 // create btnBoom
 
@@ -78,7 +78,7 @@ blood.onload = function() {
 };
 blood.src = "images/blood.png";
 
-// creat class and data monster
+// New class Monster
 function Monster (beginX , beginY, endX, endY, startX, startY, stopX, stopY, speed, click, show, dieX, dieY) {
 	this.beginX = beginX;
 	this.beginY = beginY;
@@ -94,50 +94,24 @@ function Monster (beginX , beginY, endX, endY, startX, startY, stopX, stopY, spe
 	this.dieX = dieX;
 	this.dieY = dieY;
 }
-var Monster1 = new Monster(0, 0, 120, 120, 0, 0, 120, 120, speedOfPlay, false, true, 0,0 );
 
-var Monster2 = ( 190, 0, 190, 120, 190, 0, 190, 120, speedOfPlay, false, false, 0,0 );
+// New object Monster
+var monster1 = new Monster(0, 0, 120, 120, 0, 0, 120, 120, speedOfPlay, false, true, 0,0 );
 
-var Monster3 = ( 380, 0, 260, 120, 380, 0, 260, 120, speedOfPlay, false, false, 0, 0);
+var monster2 = new Monster( 190, 0, 190, 120, 190, 0, 190, 120, speedOfPlay, false, false, 0,0 );
 
-var Monster4 = ( 380, 190, 260, 190, 380, 190, 260, 190, speedOfPlay, false, false, 0, 0);
+var monster3 = new Monster( 380, 0, 260, 120, 380, 0, 260, 120, speedOfPlay, false, false, 0, 0);
 
-var Monster5 = ( 380, 380, 260, 260, 380, 380, 260, 260, speedOfPlay, false, false, 0, 0);
+var monster4 = new Monster( 380, 190, 260, 190, 380, 190, 260, 190, speedOfPlay, false, false, 0, 0);
 
-var Monster6 = (190, 380, 190, 260, 190, 380, 190, 260, speedOfPlay, false, false, 0,0);
+var monster5 = new Monster( 380, 380, 260, 260, 380, 380, 260, 260, speedOfPlay, false, false, 0, 0);
+
+var monster6 = new Monster(190, 380, 190, 260, 190, 380, 190, 260, speedOfPlay, false, false, 0,0);
 
 
-var Monster7 = {
-	beginX: 0,
-	beginY: 380,
-	endX: 120,
-	endY: 260,
-	startX: 0,
-	startY: 380,
-	stopX: 120,
-	stopY: 260,
-	speed: speed,
-	click: false,
-	show: false,
-	dieX: 0,
-	dieY:0
-}
+var monster7 = new Monster(0, 380, 120, 260, 0, 380, 120, 260, speed, false, false, 0, 0);
 
-var Monster8 = {
-	beginX: 0,
-	beginY: 190,
-	endX: 120,
-	endY: 190,
-	startX: 0,
-	startY: 190,
-	stopX: 120,
-	stopY: 190,
-	speed: speed,
-	click: false,
-	show: false,
-	dieX: 0,
-	dieY:0
-}
+var monster8 = new Monster(0, 190, 120, 190, 0, 190, 120, 190, speed, false, false, 0, 0);
 
 var Monster9 = {
 	startX: Math.floor((Math.random() * 500) + 1),
@@ -151,26 +125,11 @@ var Monster9 = {
 	dieY:0
 }
 
-
-var drawContainer = function(){
-	if (setBackground) { 
-		context.drawImage(backgroundContainer,0,0,container.width,container.height);
-	}
-	createHeader();
+var updateBlood = function(){
 	
-	if(booleanPause) {
-		context.fillStyle = "#FFFFFF";
-		context.font = "50px Arial";
-		context.fillText("Pause!!!", 180, 240);
-	}
-	if(booleanStop) {
-		context.fillStyle = "#FFFFFF";
-		context.font = "50px Arial";
-		context.fillText("Pause!!!", 180, 240);
-	}
 };
-// create Image btnPause,btnRestart, btnBoom .......... of header;
 
+// create Image btnPause,btnRestart, btnBoom .......... of header;
 var createHeader = function(){
 	contextAction.clearRect(0,0,header.width,header.height);
 	contextAction.fillStyle("#007f7f");
@@ -179,7 +138,7 @@ var createHeader = function(){
 	contextAction.fillText("Random Monster: " + numberMonster,300, 30);
 	contextAction.fillText("Heart: ", 10,60);
 	contextAction.fillText("Speed: " + speed, 10, 90);
-	var item = 0;
+	var item = 0;	
 	for(var i = 0; i < heart; i ++){
 		contextAction.drawImage(heartImg,(item + 70),45,20,20);
 		item += 20;
@@ -193,6 +152,53 @@ var createHeader = function(){
 	contextAction.fillText(numberBoom,300,75);
 	contextAction.fillText(numberStop,360,75);
 	contextAction.font = "20px Arial";
+};
+
+// function load and draw pictures
+var drawContainer = function(){
+	if (setBackground) { 
+		context.drawImage(backgroundContainer,0,0,container.width,container.height);
+	}
+	
+	if(monster1.show) {
+		context.drawImage(imageMonter, monster1.startX, monster1.startY);
+	}
+	if(monster2.show) {
+		context.drawImage(imageMonter, monster2.startX, monster2.startY);
+	}
+	if(monster3.show) {
+		context.drawImage(imageMonter, monster3.startX, monster3.startY);
+	}
+	if(monster4.show) {
+		context.drawImage(imageMonter, monster4.startX, monster4.startY);
+	}
+	if(monster5.show) {
+		context.drawImage(imageMonter, monster5.startX, monster5.startY);
+	}
+	if(monster6.show) {
+		context.drawImage(imageMonter, monster6.startX, monster6.startY);
+	}
+	if(monster7.show) {
+		context.drawImage(imageMonter, monster7.startX, monster7.startY);
+	}
+	if(monster8.show) {
+		context.drawImage(imageMonter, monster8.startX, monster8.startY);
+	}
+	if(monster9.show) {
+		context.drawImage(imageMonter, monster9.startX, monster9.startY);
+	}
+	createHeader();
+	
+	if(booleanPause) {
+		context.fillStyle = "#FFFFFF";
+		context.font = "50px Arial";
+		context.fillText("Pause!!!", 180, 240);
+	}
+	if(booleanStop) {
+		context.fillStyle = "#FFFFFF";
+		context.font = "50px Arial";
+		context.fillText("Pause!!!", 180, 240);
+	}
 };
 
 // creat event click for buttons
@@ -248,13 +254,13 @@ header.addEventListener("click", function(e) {
 	}
 	
 	// button restart 
-	
 	if (locationX > 450 && locationX < 490 && locationY > 60 && locationY < 100) {
 		console.log("RESTART");
 		restart() ;
 	}
 });
-// even click for Monster
+
+// even click for Monster in the area container
 container.addEventListener("click", function (e){
 	if (booleanPause) {
 		score -= 5;
@@ -376,12 +382,11 @@ var randomMonster = function () {
 }
 
 var addPositonMonsterDie = function (positonX, positionY){
-var Boold = { 
+var imteBoold = { 
 	positionX : positionX,
 	positionY : positionY
 	};
-	
-	
+	listBoold.unshift(itemBlood);	
 };
 
 
