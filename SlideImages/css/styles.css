@@ -5,20 +5,29 @@
 
 }
 
-#container{
+#container {
 	height: 450px;
 	width: 650px;
 	margin: 20px auto;
 	position:relative;
+	
 }
 
-#img{
+.frame_images{
 	height: 450px;
 	width: 650px;
 	position: absolute;
+	
+}
+#images {
+	width: 650px;
+	height: 450px;
+	position: absolute;
+	border: 4px solid black;
+	border-radius: 8px;
 }
 
-#left_holder{
+#left_holder {
 	height: 450px;
 	width: 100px;
 	position: absolute;
@@ -26,25 +35,43 @@
 	top: 0px;
 }
 
-#right_holder{
+#right_holder {
 	height: 450px;
 	width: 100px;
 	position: absolute;
 	right: -100px;
 	top: 0px;
 }
-.left{
+.left {
 	height: 50px;
     width: 50px;
     position: absolute;
     top: 40%;
-    left: 0px;	
+    left: -55px;	
 }
 
-.right{
+.right {
 	height: 50px;
     width: 50px;
     position: absolute;
     top: 40%;
-    right: 0px;	
+    right: -55px;	
 }
+
+#footer {
+	margin: 0 auto;
+	text-align :center;
+}
+
+.imagesFooter {
+	text-align :center;
+	width: 60px;
+	height: 40px;
+	border: 2px solid black;
+	border-radius: 8px;
+}
+.active, .imagesFooter:hover {
+	width: 80px;
+	height: 50px;
+}
+
