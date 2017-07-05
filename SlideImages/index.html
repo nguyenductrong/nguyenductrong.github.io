@@ -1,24 +1,44 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-
-
 <title>Slide Images</title>
-<link rel="stylesheet" href="styles.css">
-
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body >
     <!-- Start container-->
     <div id="container">
-	  <img  src="images/img1.jpg" id="img" >
-	  <div id="left_holder">
-	    <img onClick="slide(-1)" class="left" src="images/left.png" >
+	  <div class="frame_images">	  
+	    <img  alt = "ImageSlider" src="images/img1.jpg" id="images" >
 	  </div>
-	  <div id ="right_holder">
-	    <img onClick="slide(1)" class="right" src="images/right.png" >
+	  <div class="frame_images">	  
+	    <img  alt = "ImageSlider" src="images/img2.jpg" id="images" >
+	  </div>
+	  <div class="frame_images">	  
+	    <img  alt = "ImageSlider" src="images/img3.jpg" id="images" >
+	  </div>
+	  <div class="frame_images">	  
+	    <img  alt = "ImageSlider" src="images/img4.jpg" id="images" >
+	  </div>
+	  <div class="frame_images">	  
+	    <img  alt = "ImageSlider" src="images/img5.jpg" id="images" >
+	  </div>
+	  <div class="left_holder">
+	    <img onClick="plucSlides(-1)" class="left" src="images/left.png" alt= "Left" >
+	  </div>
+	  <div class ="right_holder">
+	    <img onClick="plucSlides(1)" class="right" src="images/right.png" alt = "Right">
 	  </div>
 	</div>
 	<!-- End container-->
+	<!-- Start footer -->
+	<div id="footer">
+	  <img  alt = "ImageSlider" src="images/img1.jpg" onclick="currentSlide(1)" class="imagesFooter" >
+	  <img  alt = "ImageSlider" src="images/img2.jpg" onclick="currentSlide(2)" class="imagesFooter" >
+	  <img  alt = "ImageSlider" src="images/img3.jpg" onclick="currentSlide(3)" class="imagesFooter" >
+	  <img  alt = "ImageSlider" src="images/img4.jpg" onclick="currentSlide(4)" class="imagesFooter" >
+	  <img  alt = "ImageSlider" src="images/img5.jpg" onclick="currentSlide(5)" class="imagesFooter" >
+	</div>
+	<!-- End container -->
 	<script src="js/slideImg.js"></script>
 </body>
 </html>
