@@ -8,13 +8,12 @@ body {
 #container {
 	margin: 0 auto;
 	display: block;
-	cursor: pointer; 
-	border: 1px solid black;
-	
+	cursor: pointer; 	
 }
 
 #header {
 	margin: 0 auto;
 	display: block;
 	cursor: pointer;
+	background: #99FF99;
 }
