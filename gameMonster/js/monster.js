@@ -16,7 +16,8 @@ var booleanStop = false;
 var booleanPause = false;
 var run = true;
 var listBlood = new Array();
-
+var stopGameOver = false;
+var numberMonsterDie = 0;
 // setBackground container
 var backgroundContainer = new Image();
 backgroundContainer.onload = function() {
@@ -35,6 +36,11 @@ imageMonter.onload = function() {
 }
 imageMonter.src = "images/monster.png";
 
+var imageMonsterBoss = new Image();
+imageMonsterBoss.onload = function() {
+}
+imageMonsterBoss.src = "images/monsterBoss.png";
+
 // create btnBoom
 var btnBoom = new Image();
 btnBoom.onload = function() {	
@@ -52,6 +58,12 @@ var btnPause = new Image();
 btnPause.onload = function() {	
 }
 btnPause.src = "images/pause.png";
+
+// create play
+var btnPlay = new Image();
+btnPlay.onload = function() {
+}
+btnPlay.src = "images/play.png";
 
 // create btnRestart
 var btnRestart = new Image();
@@ -101,12 +113,11 @@ var monster5 = new Monster( 380, 380, 260, 260, 380, 380, 260, 260, speedOfPlay,
 
 var monster6 = new Monster(190, 380, 190, 260, 190, 380, 190, 260, speedOfPlay, false, false, 0,0);
 
-
 var monster7 = new Monster(0, 380, 120, 260, 0, 380, 120, 260, speedOfPlay, false, false, 0, 0);
 
 var monster8 = new Monster(0, 190, 120, 190, 0, 190, 120, 190, speedOfPlay, false, false, 0, 0);
 
-var monster9 = (Math.floor((Math.random() * 500) + 1),
+var monster9 = new Monster(Math.floor((Math.random() * 500) + 1),
 				Math.floor((Math.random() * 500) + 1),
 				Math.floor((Math.random() * 500) + 1),
 				Math.floor((Math.random() * 500) + 1),
@@ -114,130 +125,124 @@ var monster9 = (Math.floor((Math.random() * 500) + 1),
 				Math.floor((Math.random() * 500) + 1),
 				Math.floor((Math.random() * 500) + 1),
 				Math.floor((Math.random() * 500) + 1),
-				1, false, true, 0, 0);
+				1, false, false, 0, 0);
 
 // creat event click for buttons
 header.addEventListener("click", function(e) {
 	var locationX = e.pageX - this.offsetLeft;
 	var locationY = e.pageY - this.offsetTop;
-	
-	// check click boom
-	if (locationX > 290 && locationX < 340 && locationY > 60 && locationY < 100) {
-		if (booleanBoom) {
+	if(stopGameOver) {
+		console.log("Stop game!");
+	} else {
+		// check click boom
+		if (locationX > 290 && locationX < 340 && locationY > 60 && locationY < 100) {
 			console.log("BOOM");
-			clickBoom();
-			numberBoom --;
-			if (numberBoom <= 0) {
+			if (booleanBoom) {
+				clickBoom();
+				numberBoom --;
+				if (numberBoom <= 0) {
 				booleanBoom = false;
+				}
 			}
 		}
-	}	
-	// check click stop
-	if (locationX > 350 && locationX < 390 && locationY > 60 && locationY < 100 ) {
-		console.log("STOP");
-		if (numberStop > 0) {
-			if (run) {
-				run = false ;
-				booleanStop = true;
+		// check click stop
+		if (locationX > 350 && locationX < 390 && locationY > 60 && locationY < 100 ) {
+			console.log("STOP");			
+			if(booleanPause) {
+				console.log("Game Pause!");	
+			}else {
 				numberStop --;
-			} else {
-				run = true;
-				main();
-				booleanStop = false;
-			}
-			setTimeout(function() {
-				run = true;
-				main();
+				run = false;
 				booleanStop = true;
-			},3000);
-		} else {
-			run = true;
-			main();
-			booleanStop = false;
+				if(numberStop <= 0) {
+					booleanStop = false;
+					run = true;
+					main();					
+				}			
+				setTimeout(function() {
+					run = true;
+					main();
+					booleanStop = false;
+				},2000);
+			}
+			 
+		}
+		//check click pause
+		if (locationX > 400 && locationX< 440 && locationY > 60 && locationY < 100) {
+			console.log("PAUSE");
+			if (run){
+				run = false;
+				main();
+				booleanPause = true;
+				contextAction.drawImage(btnPlay, 400, 60, 40, 40);
+				btnPause.enabled=true; // hidden image pause
+			}else {
+				run = true;
+				main();
+				booleanPause = false;
+				container.addEventListener("click", clickContainer );
+			}
+		
 		}
 	}
-	//check click pause
-	if (locationX > 400 && locationX< 440 && locationY > 60 && locationY < 100) {
-		console.log("PAUSE");
-		if (run){
-			run = false;
-			booleanPause = true;
-		}else {
-			run = true;
-			main();
-			booleanPause = false;
-		}	
-	}
-	
 	// check click restart
 	if (locationX > 450 && locationX < 490 && locationY > 60 && locationY < 100) {
-		console.log("RESTART");
-		context.clearRect(0, 0, container.width, container.height);
-		restart();
-		main();
+			console.log("RESTART");
+			context.clearRect(0, 0, container.width, container.height);
+			restart();
+			main();
 	}
-})
+		
+});
 
-// even click for Monster in the area container
-container.addEventListener("click", function (e){
+
+function clickContainer (e) {
 	locationX = e.pageX - this.offsetLeft; // position mouse 
 	locationY = e.pageY - this.offsetTop;
-	console.log(locationX);
-	console.log(locationY);
-	if (!booleanPause || booleanStop) {
-		if (monster1.show) {
-			executeActionMonsterDie(monster1, locationX, locationY);
-			
-		} 
-		if (monster2.show) {
-			executeActionMonsterDie(monster2, locationX, locationY);
-			
-		}
-		if (monster3.show) {
-			executeActionMonsterDie(monster3, locationX,locationY);
-			
-		}
-		if (monster4.show) {
-			executeActionMonsterDie(monster4, locationX,locationY);
-			
-		}
-		if (monster5.show) {
-			executeActionMonsterDie(monster5, locationX,locationY);
-			
-		}
-		if (monster6.show) {
-			executeActionMonsterDie(monster6, locationX,locationY);
-			
-		}
-		if (monster7.show) {
-			executeActionMonsterDie(monster7, locationX,locationY);
-			
-		}
-		if (monster8.show) {
-			executeActionMonsterDie(monster8, locationX,locationY);
-			
-		}
-		if (monster9.show) {
-			executeActionMonsterDie(monster9, locationX,locationY);	
-		}	
-	}
 	
-},false);
+	if (monster1.show) {
+		executeActionMonsterDie(monster1, locationX, locationY);
+			
+	} 
+	if (monster2.show) {
+		executeActionMonsterDie(monster2, locationX, locationY);
+	}
+	if (monster3.show) {
+		executeActionMonsterDie(monster3, locationX,locationY);
+	}
+	if (monster4.show) {
+		executeActionMonsterDie(monster4, locationX,locationY);
+	}
+	if (monster5.show) {
+		executeActionMonsterDie(monster5, locationX,locationY);
+	}
+	if (monster6.show) {
+		executeActionMonsterDie(monster6, locationX,locationY);
+	}
+	if (monster7.show) {
+		executeActionMonsterDie(monster7, locationX,locationY);
+	}
+	if (monster8.show) {
+		executeActionMonsterDie(monster8, locationX,locationY);
+	}
+	if (monster9.show) {
+		executeActionMonsterDie(monster9, locationX,locationY);	
+	}
+}
+// even click for Monster in the area container
+container.addEventListener("click", clickContainer );
 
 /*
   funciton click on the monster
   @param locationX, locationY : location mouster
 */
-var executeActionMonsterDie = function(monster, locationX, locationY) {
-	var countClickMonster = 0;
-	var countClick = 0;
+var executeActionMonsterDie = function(monster, locationX, locationY) {	
 	if (monster.click) {
 		if (monster.startX < locationX && locationX < (monster.startX + imageMonter.width) && locationY < (monster.startY + imageMonter.height)) {
 		var soundClick = new Audio('audio/click.wav');
 		soundClick.play();
 		score += 10;
 		tempScore += 10;
-		countClickMonster +=1;
 		monster.click = false;
 		monster.show = false;
 		monster.dieX = locationX;
@@ -246,33 +251,31 @@ var executeActionMonsterDie = function(monster, locationX, locationY) {
 		monster.startY = monster.beginY;
 		monster.stopX = monster.endX;
 		monster.stopY = monster.endY;
-        console.log("Number click monster: " + countClickMonster);
-		if(countClickMonster == 20){
-		  heart ++;
-		  countClickMonster = 0;
-		}
-		if(countClickMonster % 5 == 0){
-			monster9.show = true;
-			console.log("show monster9");
-		}
-		if(countClickMonster == 50){
-			numberBoom += 1;
-		}
-		for (var i = 0; i < numberMonster ; i ++) {
-			randomMonster();	
-		}
+		drawContainer();	
 		addPositionMonsterDie(monster.dieX, monster.dieY);
-		drawContainer();
-		
+		appearMonsterBoss();
+		for (var i = 0; i < numberMonster; i++) {
+			randomMonster();
+		}
 		}else {
 			score -= 5;
-		    tempScore -= 5;
-			countClick ++;
-			if (countClick == 5) {
-				heart --;
-			}
-		}	
+		}
+		
 	} 	
+}
+
+function appearMonsterBoss() {
+	numberMonsterDie = parseInt(listBlood.length);
+	console.log("so monster die: " + numberMonsterDie);
+	if( numberMonsterDie == 50) {
+		heart ++;
+	}
+	if(numberMonsterDie == 20) {
+		numberBoom ++;
+		numberStop ++;
+		numberMonsterDie = 0;
+		monster9.show = true;
+	}
 }
 
 /*
@@ -281,11 +284,12 @@ var executeActionMonsterDie = function(monster, locationX, locationY) {
          positonY: location monsterDieY
 */
 var addPositionMonsterDie = function(positionX, positionY) {
-	var itemBoold = { 
+	var itemBlood = { 
 		positionX: positionX,
 		positionY: positionY
 	}
-	listBlood[listBlood.length] = itemBoold;	
+	listBlood[listBlood.length] = itemBlood;
+	
 }
 
 // function create a random monster
@@ -339,7 +343,6 @@ var randomMonster = function () {
 // function speed by score
 var leverPlay = function() {
 	var lever = tempScore/100;
-	console.log("Lever: " + parseInt(lever));
 	switch(parseInt(lever)) {
 		case 1:
 		speedOfPlay = 1;
@@ -357,6 +360,11 @@ var leverPlay = function() {
 		speedOfPlay = 6;
 		numberMonster = 6;
 		break;
+		default:
+		if (lever > 6){
+			speedOfPlay = 6;
+		}
+		break;
 	}
 }
 
@@ -365,63 +373,63 @@ var clickBoom = function() {
 	if (monster1.show) {
 		score += 10;
 		tempScore += 10;
-		monster1.show = true;
+		monster1.show = false;
 		monster1.click = false;
 		addPositionMonsterDie(monster1.startX, monster1.startY);
 	}
 	if (monster2.show) {
 		score += 10;
 		tempScore += 10;
-		monster2.show = true;
+		monster2.show = false;
 		monster2.click = false;
 		addPositionMonsterDie(monster2.startX, monster2.startY);
 	}
 	if (monster3.show) {
 		score += 10;
 		tempScore += 10;
-		monster3.show = true;
+		monster3.show = false;
 		monster3.click = false;
 		addPositionMonsterDie(monster3.startX, monster3.startY);
 	}
 	if (monster4.show) {
 		score += 10;
 		tempScore += 10;
-		monster4.show = true;
+		monster4.show = false;
 		monster4.click = false;
 		addPositionMonsterDie(monster4.startX, monster4.startY);
 	}
 	if (monster5.show) {
 		score += 10;
 		tempScore += 10;
-		monster5.show = true;
+		monster5.show = false;
 		monster5.click = false;
 		addPositionMonsterDie(monster5.startX, monster5.startY);
 	}
 	if (monster6.show) {
 		score += 10;
 		tempScore += 10;
-		monster6.show = true;
+		monster6.show = false;
 		monster6.click = false;
 		addPositionMonsterDie(monster6.startX, monster6.startY);
 	}
 	if (monster7.show) {
 		score += 10;
 		tempScore += 10;
-		monster7.show = true;
+		monster7.show = false;
 		monster7.click = false;
 		addPositionMonsterDie(monster7.startX, monster7.startY);
 	}
 	if (monster8.show) {
 		score += 10;
 		tempScore += 10;
-		monster8.show = true;
+		monster8.show = false;
 		monster8.click = false;
 		addPositionMonsterDie(monster8.startX, monster8.startY);
 	}
 	if (monster9.show) {
 		score += 10;
 		tempScore += 10;
-		monster9.show = true;
+		monster9.show = false;
 		monster9.click = false;
 		addPositionMonsterDie(monster9.startX, monster9.startY);
 	}
@@ -429,7 +437,7 @@ var clickBoom = function() {
 	var soundBoom = new Audio('audio/boom.mp3');
 	soundBoom.play();
 	drawContainer();
-	for (var i = 0; i < numberBoom; i ++){
+	for (var i = 0; i < numberMonster; i ++){
 		randomMonster();
 	}
 }
@@ -441,7 +449,7 @@ var clickBoom = function() {
 */
 var refreshMonster = function (monster) {
 	monster.show = false;
-	monster.click = false;
+	monster.speed = 1;
 	monster.startX = monster.beginX;
 	monster.startY = monster.beginY
 	monster.stopX = monster.endX;
@@ -450,8 +458,9 @@ var refreshMonster = function (monster) {
 
 // function click restart
 var restart = function() {
-	speed = 1;
+	speedOfPlay = 1;
 	run = true;
+	stopGameOver = false;
 	score = 10;
 	tempScore = 10;
 	heart = 5;
@@ -462,8 +471,8 @@ var restart = function() {
 	booleanBoom = true;
 	booleanStop = false;
 	booleanPause = false;
+	localStorage.setItem("tempScore",tempScore);
 	listBlood = new Array();
-	run = true;
 	refreshMonster(monster1);
 	refreshMonster(monster2);
 	refreshMonster(monster3);
@@ -473,7 +482,8 @@ var restart = function() {
 	refreshMonster(monster7);
 	refreshMonster(monster8);
 	refreshMonster(monster9);
-	monster1.show = true;    // after refresh monster1 appear first
+	monster1.show = true;   // after refresh monster1 appear first
+	container.addEventListener("click", clickContainer );
 }
 // function update location move monster
 var updateMoveMonster = function(monster) {
@@ -493,9 +503,10 @@ var updateMoveMonster = function(monster) {
 	
 	if(monster.startX == monster.stopX && monster.startY == monster.stopY) {
 		monster.startX = monster.stopX;
-		monster.startY = monster.startY;
+		monster.startY = monster.stopY;
 		monster.stopX = monster.beginX;
 		monster.stopY = monster.beginY;
+
 	}
 	
 	if(monster.startX == monster.beginX && monster.startY == monster.beginY) {
@@ -505,6 +516,8 @@ var updateMoveMonster = function(monster) {
 		monster.stopX = monster.endX;
 		monster.stopY = monster.endY;
 		score -= 10;
+		heart --;
+		randomMonster();
 	}
 	
 }
@@ -513,9 +526,9 @@ var updateMoveMonster = function(monster) {
 var updateBlood = function() {
 	if (listBlood.length > 0) {
 		for (var i = 0; i < listBlood.length; i ++) {
-			context.drawImage(blood,listBlood[i].positionX, listBlood[i].positionY);
+			context.drawImage(blood,listBlood[i].positionX - 30, listBlood[i].positionY - 30);
 		}
-	}		
+	}
 }
 
 // create Image btnPause,btnRestart, btnBoom .......... of header;
@@ -524,7 +537,6 @@ var createHeader = function() {
 	contextAction.fillStyle = "#007f7f";
 	contextAction.font = "20px Arial";
 	contextAction.fillText("Score: " + score, 10 , 30);
-	contextAction.fillText("Random Monster: " + numberMonster,300, 30);
 	contextAction.fillText("Heart: ", 10,60);
 	contextAction.fillText("Speed: " + speedOfPlay, 10, 90);
 	var item = 0;	
@@ -543,7 +555,6 @@ var createHeader = function() {
 	contextAction.font = "20px Arial";
 }
 
-
 // function load and draw pictures
 var drawContainer = function() {
 	
@@ -555,42 +566,54 @@ var drawContainer = function() {
 	
 	if(monster1.show) {
 		context.drawImage(imageMonter, monster1.startX, monster1.startY);
+		
 	}
 	if(monster2.show) {
 		context.drawImage(imageMonter, monster2.startX, monster2.startY);
+		
 	}
 	if(monster3.show) {
 		context.drawImage(imageMonter, monster3.startX, monster3.startY);
+		
 	}
 	if(monster4.show) {
 		context.drawImage(imageMonter, monster4.startX, monster4.startY);
+		
 	}
 	if(monster5.show) {
 		context.drawImage(imageMonter, monster5.startX, monster5.startY);
+		
 	}
 	if(monster6.show) {
 		context.drawImage(imageMonter, monster6.startX, monster6.startY);
+		
 	}
 	if(monster7.show) {
 		context.drawImage(imageMonter, monster7.startX, monster7.startY);
+		
 	}
 	if(monster8.show) {
 		context.drawImage(imageMonter, monster8.startX, monster8.startY);
+		
 	}
 	if(monster9.show) {
-		context.drawImage(imageMonter, monster9.startX, monster9.startY);
+		context.drawImage(imageMonsterBoss, monster9.startX, monster9.startY);
+	
 	}
 	createHeader();
 	
 	if(booleanPause) {
+	    booleanBoom = false;
 		context.fillStyle = "#FFFFFF";
 		context.font = "50px Arial";
 		context.fillText("Pause!!!", 180, 240);
+		contextAction.drawImage(btnPlay, 400, 60, 40, 40);
+		container.removeEventListener("click", clickContainer);
 	}
 	if(booleanStop) {
 		context.fillStyle = "#FFFFFF";
 		context.font = "50px Arial";
-		context.fillText("Pause!!!", 180, 240);
+		context.fillText("Stop!!!", 180, 240);
 	}
 }
 
@@ -604,13 +627,16 @@ var gameOver = function() {
 	context.font = "20px Arial";
 	context.fillStyle = "#5bfa3f";
 	context.fillText("Score = " + score, 130, 240);
-	context.fillText("Best score = " + localStorage.getItem("tempScore"), 130, 280);	
+	context.fillText("Best score = " + localStorage.getItem("tempScore"), 130, 280);
+	run = false;
+	booleanBoom = false;
+	stopGameOver = true;
+	container.removeEventListener("click", clickContainer); // cancel even click monster
 }
 
 // funcition run 
 var main = function() {
-	leverPlay();
-	
+	leverPlay();	
 	if(monster1.show) {
 		updateMoveMonster(monster1);
 	}
@@ -644,7 +670,7 @@ var main = function() {
 		gameOver();
 	} else if(heart == 0) {
 		var bestScore = parseInt(localStorage.getItem("tempScore"));
-		if(tempScore < score) {
+		if(bestScore < score) {
 			localStorage.setItem("tempScore", score);			
 		}
 		gameOver();
