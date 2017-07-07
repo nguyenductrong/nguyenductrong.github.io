@@ -1,0 +1,19 @@
+
+body {
+	margin: 0;
+	padding: 0;
+	
+}
+
+#container {
+	margin: 0 auto;
+	display: block;
+	cursor: pointer; 	
+}
+
+#header {
+	margin: 0 auto;
+	display: block;
+	cursor: pointer;
+	background: #99FF99;
+}
