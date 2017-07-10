@@ -164,8 +164,7 @@ header.addEventListener("click", function(e) {
 					main();
 					booleanStop = false;
 				},2000);
-			}
-			 
+			}	 
 		}
 		//check click pause
 		if (locationX > 400 && locationX< 440 && locationY > 60 && locationY < 100) {
@@ -182,17 +181,16 @@ header.addEventListener("click", function(e) {
 				booleanPause = false;
 				container.addEventListener("click", clickContainer );
 			}
-		
 		}
 	}
+	
 	// check click restart
 	if (locationX > 450 && locationX < 490 && locationY > 60 && locationY < 100) {
 			console.log("RESTART");
 			context.clearRect(0, 0, container.width, container.height);
 			restart();
 			main();
-	}
-		
+	}	
 });
 
 
@@ -257,24 +255,26 @@ var executeActionMonsterDie = function(monster, locationX, locationY) {
 		for (var i = 0; i < numberMonster; i++) {
 			randomMonster();
 		}
+		
 		}else {
 			score -= 5;
 		}
-		
 	} 	
 }
 
 function appearMonsterBoss() {
 	numberMonsterDie = parseInt(listBlood.length);
 	console.log("so monster die: " + numberMonsterDie);
-	if( numberMonsterDie == 50) {
+	if( numberMonsterDie == 40) {
 		heart ++;
-	}
-	if(numberMonsterDie == 20) {
 		numberBoom ++;
 		numberStop ++;
 		numberMonsterDie = 0;
 		monster9.show = true;
+		monster9.speed = 2;	
+		numberMonsterDie = 0;
+		score += 15;
+		tempScore += 15;
 	}
 }
 
